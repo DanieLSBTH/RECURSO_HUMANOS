@@ -1,0 +1,441 @@
+---
+- # ====== List of Values: DESKTOP THEME STYLES ================
+  id: 1527251710259012960
+  identification: 
+    name: DESKTOP THEME STYLES
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select s.name d,
+             s.theme_style_id r
+        from apex_application_theme_styles s,
+             apex_application_themes t
+       where s.application_id = :app_id
+         and t.application_id = s.application_id
+         and t.theme_number   = s.theme_number
+         and t.is_current     = 'Yes'
+       order by 1
+
+  column-mapping: 
+    return: R
+    display: D
+    default-sort: Use Order By from Query
+
+- # ====== List of Values: USER_THEME_PREFERENCE ===============
+  id: 1527252461886012962
+  identification: 
+    name: USER_THEME_PREFERENCE
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: Allow End Users to choose Theme Style ========
+    id: 1527252733117012962
+    entry: 
+      sequence: 1
+      display: Allow End Users to choose Theme Style
+      return: Yes
+
+- # ====== List of Values: TIMEFRAME (4 WEEKS) =================
+  id: 1527272550595013404
+  identification: 
+    name: TIMEFRAME (4 WEEKS)
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select disp,
+             val as seconds
+        from table( apex_util.get_timeframe_lov_data )
+       order by insert_order
+
+  column-mapping: 
+    return: SECONDS
+    display: DISP
+    default-sort: Use Order By from Query
+
+- # ====== List of Values: VIEW_AS_REPORT_CHART ================
+  id: 1527329009938013456
+  identification: 
+    name: VIEW_AS_REPORT_CHART
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: Add Report Page ==============================
+    id: 1527329375543013456
+    entry: 
+      sequence: 1
+      display: Add Report Page
+      return: REPORT
+
+    globalization: 
+      template: <span class="fa fa-table" aria-hidden="true"></span><span class="u-VisuallyHidden">#DISPLAY_VALUE#</span>
+
+  - # ====== Entry: Add Chart Page ===============================
+    id: 1527329791003013456
+    entry: 
+      sequence: 2
+      display: Add Chart Page
+      return: CHART
+
+    globalization: 
+      template: <span class="fa fa-pie-chart" aria-hidden="true"></span><span class="u-VisuallyHidden">#DISPLAY_VALUE#</span>
+
+- # ====== List of Values: FEEDBACK_RATING =====================
+  id: 1527352171016013473
+  identification: 
+    name: FEEDBACK_RATING
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: Positive =====================================
+    id: 1527352476472013474
+    entry: 
+      sequence: 1
+      display: Positive
+      return: 3
+
+    globalization: 
+      template: <span title="#DISPLAY_VALUE#" aria-label="#DISPLAY_VALUE#"><span class="fa fa-smile-o fa-2x feedback-positive" aria-hidden="true" ></span></span>
+
+  - # ====== Entry: Neutral ======================================
+    id: 1527352818515013474
+    entry: 
+      sequence: 2
+      display: Neutral
+      return: 2
+
+    globalization: 
+      template: <span title="#DISPLAY_VALUE#" aria-label="#DISPLAY_VALUE#"><span class="fa fa-emoji-neutral fa-2x feedback-neutral" aria-hidden="true" ></span></span>
+
+  - # ====== Entry: Negative =====================================
+    id: 1527353220079013474
+    entry: 
+      sequence: 3
+      display: Negative
+      return: 1
+
+    globalization: 
+      template: <span title="#DISPLAY_VALUE#" aria-label="#DISPLAY_VALUE#"><span class="fa fa-frown-o fa-2x feedback-negative" aria-hidden="true" ></span></span>
+
+- # ====== List of Values: FEEDBACK_STATUS =====================
+  id: 1527364514265013482
+  identification: 
+    name: FEEDBACK_STATUS
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: No Action ====================================
+    id: 1527364837188013482
+    entry: 
+      sequence: 1
+      display: No Action
+      return: 0
+
+  - # ====== Entry: Acknowledged =================================
+    id: 1527365223945013482
+    entry: 
+      sequence: 2
+      display: Acknowledged
+      return: 1
+
+  - # ====== Entry: Open =========================================
+    id: 1527365686499013482
+    entry: 
+      sequence: 3
+      display: Open
+      return: 3
+
+  - # ====== Entry: Closed =======================================
+    id: 1527366027134013483
+    entry: 
+      sequence: 4
+      display: Closed
+      return: 4
+
+- # ====== List of Values: STATUS ==============================
+  id: 1527529790928042809
+  identification: 
+    name: STATUS
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: ADMIN ========================================
+    id: 1527530023513042813
+    entry: 
+      sequence: 1
+      display: ADMIN
+      return: ADMIN
+
+  - # ====== Entry: USER =========================================
+    id: 1527530497583042813
+    entry: 
+      sequence: 2
+      display: USER
+      return: USER
+
+- # ====== List of Values: LISTA_USUAIRO =======================
+  id: 1553059801394619897
+  identification: 
+    name: LISTA_USUAIRO
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT id,username 
+      FROM auth_role
+      WHERE username != 'admin';
+
+  column-mapping: 
+    return: ID
+    display: USERNAME
+    default-sort: USERNAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LISTA_EMPLEADOS_2 ===================
+  id: 1553799434454628650
+  identification: 
+    name: LISTA_EMPLEADOS_2
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT E.ID_EMPLEADO, E.NOMBRE, P.PUESTO, U.USERNAME 
+      FROM EMPLEADOS_EMPRESA E, PUESTOS P, AUTH_ROLE U
+      WHERE E.ID_PUESTO = P.ID_PUESTO
+      AND E.USUARIO = U.ID
+      GROUP BY E.ID_EMPLEADO, E.NOMBRE, P.PUESTO, U.USERNAME
+
+  column-mapping: 
+    return: ID_EMPLEADO
+    display: NOMBRE
+    default-sort: NOMBRE
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: INGRESO_EMPELEADOS ==================
+  id: 1553858885186631776
+  identification: 
+    name: INGRESO_EMPELEADOS
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT E.ID_EMPLEADO,  E.NOMBRE ||'   '|| P.PUESTO ||'   '|| U.USERNAME 
+      FROM EMPLEADOS_EMPRESA E, PUESTOS P, AUTH_ROLE U
+      WHERE E.ID_PUESTO = P.ID_PUESTO
+      AND E.USUARIO = U.ID
+
+  column-mapping: 
+    return: ID_EMPLEADO
+    display: E.NOMBRE||''||P.PUESTO||''||U.USERNAME
+    default-sort: E.NOMBRE||''||P.PUESTO||''||U.USERNAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: INGRESO2 ============================
+  id: 1554005533210394853
+  identification: 
+    name: INGRESO2
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT E.ID_EMPLEADO,  E.NOMBRE ||'   '|| P.PUESTO ||'   '|| U.USERNAME 
+      FROM EMPLEADOS_EMPRESA E, PUESTOS P, AUTH_ROLE U
+      WHERE E.ID_PUESTO = P.ID_PUESTO
+      AND E.USUARIO = U.ID
+      AND U.USERNAME =:P9999_USERNAME;
+
+  column-mapping: 
+    return: ID_EMPLEADO
+    display: E.NOMBRE||''||P.PUESTO||''||U.USERNAME
+    default-sort: E.NOMBRE||''||P.PUESTO||''||U.USERNAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: DEVOLVER_EMPLEADO ===================
+  id: 1554008828084397261
+  identification: 
+    name: DEVOLVER_EMPLEADO
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT E.ID_EMPLEADO,  E.NOMBRE ||'   '|| P.PUESTO ||'   '|| U.USERNAME 
+      FROM EMPLEADOS_EMPRESA E, PUESTOS P, AUTH_ROLE U
+      WHERE E.ID_PUESTO = P.ID_PUESTO
+      AND E.USUARIO = U.ID
+      AND U.USERNAME =:P1_USUARIO;
+
+  column-mapping: 
+    return: ID_EMPLEADO
+    display: E.NOMBRE||''||P.PUESTO||''||U.USERNAME
+    default-sort: E.NOMBRE||''||P.PUESTO||''||U.USERNAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: DEPARTAMENTO_PUESTOS.DEPARTAMENTO ===
+  id: 1558985211205574379
+  identification: 
+    name: DEPARTAMENTO_PUESTOS.DEPARTAMENTO
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: DEPARTAMENTO_PUESTOS
+
+  column-mapping: 
+    return: ID_DEPARTAMENTO
+    display: DEPARTAMENTO
+    default-sort: DEPARTAMENTO
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: PUESTOS.PUESTO ======================
+  id: 1594643881354257573
+  identification: 
+    name: PUESTOS.PUESTO
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: PUESTOS
+
+  column-mapping: 
+    return: ID_PUESTO
+    display: PUESTO
+    default-sort: PUESTO
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: AUTH_ROLE.USERNAME ==================
+  id: 1594644579231257573
+  identification: 
+    name: AUTH_ROLE.USERNAME
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: AUTH_ROLE
+
+  column-mapping: 
+    return: ID
+    display: USERNAME
+    default-sort: USERNAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: EMPLEADOS_EMPRESA.NOMBRE ============
+  id: 1605818978122347640
+  identification: 
+    name: EMPLEADOS_EMPRESA.NOMBRE
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: EMPLEADOS_EMPRESA
+
+  column-mapping: 
+    return: ID_EMPLEADO
+    display: NOMBRE
+    default-sort: NOMBRE
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: ESTADO ==============================
+  id: 1615472610779506175
+  identification: 
+    name: ESTADO
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: ENTRADA ======================================
+    id: 1615472927206506176
+    entry: 
+      sequence: 1
+      display: ENTRADA
+      return: ENTRADA
+
+  - # ====== Entry: SALIDA =======================================
+    id: 1615473327600506176
+    entry: 
+      sequence: 2
+      display: SALIDA
+      return: SALIDA
+
+- # ====== List of Values: DEPARTAMENTO_ESTADO =================
+  id: 2860475928192949632
+  identification: 
+    name: DEPARTAMENTO_ESTADO
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: ACTIVO =======================================
+    id: 2860476238165949632
+    entry: 
+      sequence: 1
+      display: ACTIVO
+      return: ACTIVO
+
+  - # ====== Entry: INACTIVO =====================================
+    id: 2860476664047949633
+    entry: 
+      sequence: 2
+      display: INACTIVO
+      return: INACTIVO
+
+- # ====== List of Values: CONTRATO ============================
+  id: 2861823778383979544
+  identification: 
+    name: CONTRATO
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: PARCIAL ======================================
+    id: 2861824003157979545
+    entry: 
+      sequence: 1
+      display: PARCIAL
+      return: PARCIAL
+
+  - # ====== Entry: TEMPORAL =====================================
+    id: 2861824400436979545
+    entry: 
+      sequence: 2
+      display: TEMPORAL
+      return: TEMPORAL
+
+  - # ====== Entry: CONTRATO  ====================================
+    id: 2861824888252979545
+    entry: 
+      sequence: 3
+      display: 'CONTRATO '
+      return: CONTRATO
+
+  - # ====== Entry: OTRO =========================================
+    id: 2861825202985979546
+    entry: 
+      sequence: 4
+      display: OTRO
+      return: OTRO
+

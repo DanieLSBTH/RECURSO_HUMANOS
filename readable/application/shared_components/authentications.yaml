@@ -1,0 +1,56 @@
+---
+- # ====== Authentication: Oracle APEX Accounts ================
+  id: 1525745973947012735
+  identification: 
+    name: Oracle APEX Accounts
+
+  settings: 
+    type: Oracle APEX Accounts
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: MY_ROLE =============================
+  id: 1527557395243057687
+  identification: 
+    name: MY_ROLE
+
+  settings: 
+    type: Custom
+    authentication-function-name: custom_auth
+    enable-legacy-authentication-attributes: false
+
+  source: 
+    pl/sql-code: |
+      FUNCTION custom_auth (p_username in varchar2, p_password in varchar2)
+      return BOOLEAN 
+      AS
+      my_user NUMBER :=0;
+      BEGIN 
+      SELECT 1 INTO my_user FROM auth_role 
+      WHERE UPPER(USERNAME) = UPPER(p_username)
+      and password = p_password
+      and status= :P9999_STATUS
+      and user_key = 'ABC';
+      RETURN TRUE;
+      EXCEPTION 
+      WHEN NO_DATA_FOUND THEN 
+      RETURN FALSE;
+      END custom_auth;
+      
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+

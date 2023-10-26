@@ -1,0 +1,735 @@
+---
+# ====== Page: Home ==========================================
+id: 1
+identification: 
+  name: Home
+  alias: HOME
+  title: RECUROS HUMANOS
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: INGRESA TU ENTRADA ==========================
+  id: 1526924885772263002
+  identification: 
+    title: INGRESA TU ENTRADA
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1527049557849012783
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: RECUROS HUMANOS =============================
+  id: 1527247893644012956
+  identification: 
+    title: RECUROS HUMANOS
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 1527016258623012769
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P1_USUARIO ===============================
+  id: 1526924933444263003
+  identification: 
+    name: P1_USUARIO
+    type: Display Only
+
+  label: 
+    label: Usuario
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 10
+    region: INGRESA TU ENTRADA # 1526924885772263002
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1527120254712012818
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: 'lower(:APP_USER)'
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: FECHA_ENTRADA ============================
+  id: 1526925145703263005
+  identification: 
+    name: FECHA_ENTRADA
+    type: Text Field
+
+  label: 
+    label: Entrada
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 60
+    region: INGRESA TU ENTRADA # 1526924885772263002
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1527120254712012818
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_EMPLEADO ==============================
+  id: 1526925275761263006
+  identification: 
+    name: P1_EMPLEADO
+    type: Popup LOV
+
+  label: 
+    label: EMPLEADO
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    multiple-values: false
+    manual-entry: false
+    search-as-you-type: false
+
+  layout: 
+    sequence: 20
+    region: INGRESA TU ENTRADA # 1526924885772263002
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1527120254712012818
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: DEVOLVER_EMPLEADO # 1554008828084397261
+    display-extra-values: true
+    display-null-value: true
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P1_USUARIO
+    items-to-submit: 
+    - P1_EMPLEADO
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_FECHA =================================
+  id: 1526925801985263012
+  identification: 
+    name: P1_FECHA
+    type: Display Only
+
+  label: 
+    label: Fecha
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 90
+    region: INGRESA TU ENTRADA # 1526924885772263002
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1527120254712012818
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: SQL Query
+    sql-query: SELECT TO_CHAR(TRUNC(SYSDATE) , 'MM/DD/YYYY') AS fecha_anterior FROM DUAL;
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_SALIDA ================================
+  id: 1526925922014263013
+  identification: 
+    name: P1_SALIDA
+    type: Display Only
+
+  label: 
+    label: SALIDA
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 40
+    region: INGRESA TU ENTRADA # 1526924885772263002
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1527120254712012818
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: SALIDA
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_ESTADO ================================
+  id: 1526926061970263014
+  identification: 
+    name: P1_ESTADO
+    type: Display Only
+
+  label: 
+    label: ENTRADA
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 30
+    region: INGRESA TU ENTRADA # 1526924885772263002
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1527120254712012818
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: ENTRADA
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_FECHA_SALIDA ==========================
+  id: 1526926369048263017
+  identification: 
+    name: P1_FECHA_SALIDA
+    type: Text Field
+
+  label: 
+    label: Salida
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 70
+    region: INGRESA TU ENTRADA # 1526924885772263002
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1527120254712012818
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: ENTRADA =====================================
+  id: 1526925424761263008
+  identification: 
+    button-name: ENTRADA
+    label: ENTRADA
+
+  layout: 
+    sequence: 100
+    region: INGRESA TU ENTRADA # 1526924885772263002
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 1527122763424012819
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: SALIDA ======================================
+  id: 1526926194577263015
+  identification: 
+    button-name: SALIDA
+    label: SALIDA
+
+  layout: 
+    sequence: 110
+    region: INGRESA TU ENTRADA # 1526924885772263002
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 1527122763424012819
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: New =================================
+  id: 1526927023829263024
+  identification: 
+    name: New
+
+  execution: 
+    sequence: 10
+    event-scope: Dynamic
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 1526927138372263025
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: SQL Statement
+      sql-statement: |
+        
+        SELECT TO_CHAR(SYSTIMESTAMP AT TIME ZONE 'America/Guatemala', 'DD-MM-YYYY HH24:MI:SS')  FROM DUAL;
+      escape-special-characters: true
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - FECHA_ENTRADA
+
+    execution: 
+      sequence: 10
+      event: New # 1526927023829263024
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: New_1 ===============================
+  id: 1526927292126263026
+  identification: 
+    name: New_1
+
+  execution: 
+    sequence: 20
+    event-scope: Dynamic
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 1526927366840263027
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: SQL Statement
+      sql-statement: |
+        
+        SELECT TO_CHAR(SYSTIMESTAMP AT TIME ZONE 'America/Guatemala', 'DD-MM-YYYY HH24:MI:SS')  FROM DUAL;
+      escape-special-characters: true
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P1_FECHA_SALIDA
+
+    execution: 
+      sequence: 10
+      event: New_1 # 1526927292126263026
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+processes: 
+- # ====== Process: ingreso_resgistros =========================
+  id: 1526925312457263007
+  identification: 
+    name: ingreso_resgistros
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      INSERT INTO INGRESO_ACTIVO_EMPLEADOS (
+          ID_EMPLEADO, 
+          ESTADO,
+          FECHA_INGRESO,
+          USUARIO, 
+          FECHA
+      ) 
+      SELECT
+          :P1_EMPLEADO,
+          :P1_ESTADO,
+          :FECHA_ENTRADA,
+          :P1_USUARIO,
+          :P1_FECHA
+      FROM DUAL
+      WHERE NOT EXISTS (
+          SELECT 1
+          FROM INGRESO_ACTIVO_EMPLEADOS
+          WHERE ID_EMPLEADO = :P1_EMPLEADO
+          AND FECHA = :P1_FECHA
+      );
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: REGISTRO GUARDADO
+
+  error: 
+    error-message: VERIFIQUE LOS CAMPOS, NO SE HAN GUARDADO
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: ENTRADA # 1526925424761263008
+
+- # ====== Process: ACTUALIZA ==================================
+  id: 1526926245679263016
+  identification: 
+    name: ACTUALIZA
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      UPDATE INGRESO_ACTIVO_EMPLEADOS
+      SET SALIDA = :P1_SALIDA, FECHA_SALIDA = :P1_FECHA_SALIDA
+      WHERE ID_EMPLEADO = :P1_EMPLEADO
+      AND FECHA = :P1_FECHA;
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: SALIDA ACTUALIZADA
+
+  error: 
+    error-message: ERROR EN LA ACTUALIZACION
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: SALIDA # 1526926194577263015
+

@@ -1,0 +1,141 @@
+---
+# ====== Theme: Universal Theme ==============================
+id: 42
+identification: 
+  theme-number: 42
+  name: Universal Theme
+  identifier: UNIVERSAL_THEME
+
+navigation: 
+  type: List
+  navigation-bar-type: List
+
+javascript: 
+  file-urls: 
+  - '#APEX_FILES#libraries/apex/#MIN_DIRECTORY#widget.stickyWidget#MIN#.js?v=#APEX_VERSION#'
+  - '#THEME_FILES#js/theme42#MIN#.js?v=#APEX_VERSION#'
+
+css: 
+  file-urls: 
+  - '#THEME_FILES#css/Core#MIN#.css?v=#APEX_VERSION#'
+
+component-defaults: 
+  page: Standard # 1525772867235012748
+  navigation-bar-list: Navigation Bar # 1527110141282012813
+  navigation-menu-list-position: Side
+  navigation-menu-list-(top): Top Navigation Menu # 1527115953383012816
+  navigation-menu-list-(side): Side Navigation Menu # 1527110576122012813
+  login-page: Login # 1525757699114012741
+  error-page: Login # 1525757699114012741
+  printer-friendly-page: Standard # 1525772867235012748
+  breadcrumb: 1527124306252012820
+  button: Text # 1527122763424012819
+  legacy-calendar: Calendar # 1527124498470012820
+  default-label: Optional - Floating # 1527120254712012818
+  optional-label: Optional - Floating # 1527120254712012818
+  required-label: Required - Floating # 1527121514210012819
+  list: Links List # 1527104171779012810
+  region: Standard # 1527049557849012783
+  classic-report: Standard # 1527087778056012801
+
+region-defaults: 
+  breadcrumbs: Title Bar # 1527061998986012789
+  charts: Standard # 1527049557849012783
+  forms: Standard # 1527049557849012783
+  lists: Standard # 1527049557849012783
+  reports: Standard # 1527049557849012783
+  wizards: Standard # 1527049557849012783
+  interactive-reports: Interactive Report # 1527039736076012779
+
+dialog-defaults: 
+  dialog-content-region: Blank with Attributes # 1525782928185012753
+  dialog-button-region: Buttons Container # 1525785750567012754
+  dialog-page: Modal Dialog # 1525767629885012745
+
+icons: 
+  library: Font APEX
+
+files: 
+  file-prefix: '#APEX_FILES#themes/theme_42/23.2/'
+
+styles: 
+- # ====== Style: Redwood Light ================================
+  id: 1527211419286012931
+  identification: 
+    name: Redwood Light
+
+  settings: 
+    is-current: false
+    is-public: true
+    accessibility-tested: false
+
+  css: 
+    file-urls: 
+    - '#APEX_FILES#libraries/oracle-fonts/oraclesans-apex#MIN#.css?v=#APEX_VERSION#'
+    - '#THEME_FILES#css/Redwood#MIN#.css?v=#APEX_VERSION#'
+
+  theme-roller-attributes: 
+    read-only: true
+    input-parameter-file-urls: '#THEME_FILES#less/theme/Redwood-Theme.less'
+    output-css-file-url: '#THEME_FILES#css/Redwood-Theme#MIN#.css?v=#APEX_VERSION#'
+
+- # ====== Style: Vita =========================================
+  id: 1527211624517012931
+  identification: 
+    name: Vita
+
+  settings: 
+    is-current: true
+    is-public: true
+    accessibility-tested: true
+
+  theme-roller-attributes: 
+    read-only: true
+    input-parameter-file-urls: '#THEME_FILES#less/theme/Vita.less'
+    output-css-file-url: '#THEME_FILES#css/Vita#MIN#.css?v=#APEX_VERSION#'
+
+- # ====== Style: Vita - Dark ==================================
+  id: 1527211849608012931
+  identification: 
+    name: Vita - Dark
+
+  settings: 
+    is-current: false
+    is-public: true
+    accessibility-tested: false
+
+  theme-roller-attributes: 
+    read-only: true
+    input-parameter-file-urls: '#THEME_FILES#less/theme/Vita-Dark.less'
+    output-css-file-url: '#THEME_FILES#css/Vita-Dark#MIN#.css?v=#APEX_VERSION#'
+
+- # ====== Style: Vita - Red ===================================
+  id: 1527212059790012931
+  identification: 
+    name: Vita - Red
+
+  settings: 
+    is-current: false
+    is-public: true
+    accessibility-tested: false
+
+  theme-roller-attributes: 
+    read-only: true
+    input-parameter-file-urls: '#THEME_FILES#less/theme/Vita-Red.less'
+    output-css-file-url: '#THEME_FILES#css/Vita-Red#MIN#.css?v=#APEX_VERSION#'
+
+- # ====== Style: Vita - Slate =================================
+  id: 1527212292528012931
+  identification: 
+    name: Vita - Slate
+
+  settings: 
+    is-current: false
+    is-public: true
+    accessibility-tested: false
+
+  theme-roller-attributes: 
+    read-only: true
+    input-parameter-file-urls: '#THEME_FILES#less/theme/Vita-Slate.less'
+    output-css-file-url: '#THEME_FILES#css/Vita-Slate#MIN#.css?v=#APEX_VERSION#'
+

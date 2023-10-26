@@ -1,0 +1,453 @@
+---
+# ====== Page: Application Appearance ========================
+id: 10010
+identification: 
+  name: Application Appearance
+  alias: APPLICATION-APPEARANCE
+  title: Tema de interfaz
+  page-group: Administration # 1527240249280012950
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  chained: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authorization-scheme: Administration Rights # 1527239638128012949
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+help: 
+  help-text: |
+    <p>Select the default color scheme used to display the application.</p>
+    <p>If <strong>Allow End Users to choose Theme Style</strong> is checked, then each end user can select from the available theme styles by clicking the <em>Customize</em> link in the bottom left corner of the Home page.</p>
+
+configuration: 
+  build-option: 'Feature: Theme Style Selection' # 1527238561044012948
+
+regions: 
+- # ====== Region: Buttons =====================================
+  id: 1527248436719012957
+  identification: 
+    title: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container # 1525785750567012754
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Configure Appearance ========================
+  id: 1527248549893012957
+  identification: 
+    title: Configure Appearance
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 1525782928185012753
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Below Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P10010_DESKTOP_THEME_STYLE_ID ============
+  id: 1527251629389012960
+  identification: 
+    name: P10010_DESKTOP_THEME_STYLE_ID
+    type: Select List
+
+  label: 
+    label: Estilo de tema de escritorio
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+    allow-multi-selection: false
+
+  layout: 
+    sequence: 10
+    region: Configure Appearance # 1527248549893012957
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1527120254712012818
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: DESKTOP THEME STYLES # 1527251710259012960
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: SQL Query (return single value)
+    sql-query: |
+      select s.theme_style_id
+      from apex_application_theme_styles s,
+          apex_application_themes t
+      where s.application_id = t.application_id
+          and s.theme_number = t.theme_number
+          and s.application_id = :app_id
+          and s.is_current = 'Yes'
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  server-side-condition: 
+    type: Rows returned
+    sql-query: |
+      select null
+        from apex_application_theme_styles s,
+             apex_application_themes t
+       where s.application_id = t.application_id
+         and s.theme_number   = t.theme_number
+         and s.application_id = :app_id
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: Blocklist HTML command characters (<>")
+
+  help: 
+    inline-help-text: El estilo de tema predeterminado se aplica a todas las usuarios
+
+- # ====== Page Item: P10010_END_USER_STYLE ====================
+  id: 1527252324036012961
+  identification: 
+    name: P10010_END_USER_STYLE
+    type: Checkbox Group
+
+  label: 
+    label: Preferencia de tema del usuario final
+    alignment: Left
+
+  settings: 
+    number-of-columns: 1
+
+  layout: 
+    sequence: 30
+    region: Configure Appearance # 1527248549893012957
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: 0
+
+  appearance: 
+    template: Hidden # 1527119921116012818
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: USER_THEME_PREFERENCE # 1527252461886012962
+    display-extra-values: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: SQL Query (return single value)
+    sql-query: |
+      select a.theme_style_by_user_pref
+        from apex_applications a
+       where a.application_id  = :app_id
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    escape-special-characters: true
+    restricted-characters: All characters can be saved.
+
+  help: 
+    inline-help-text: Si está marcado, los usuarios finales pueden elegir su propio estilo de tema mediante el enlace Personalizar.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 1527249597452012958
+  identification: 
+    button-name: CANCEL
+    label: Cancelar
+
+  layout: 
+    sequence: 10
+    region: Buttons # 1527248436719012957
+    position: PREVIOUS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1527122763424012819
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: false
+
+- # ====== Button: SAVE ========================================
+  id: 1527250915463012960
+  identification: 
+    button-name: SAVE
+    label: Aplicar cambios
+
+  layout: 
+    sequence: 20
+    region: Buttons # 1527248436719012957
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1527122763424012819
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 1527249659849012958
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CANCEL # 1527249597452012958
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 1527250324576012959
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 1527249659849012958
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: Save Theme Style ===========================
+  id: 1527253572672012962
+  identification: 
+    name: Save Theme Style
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      if :P10010_DESKTOP_THEME_STYLE_ID is not null then
+          for l_theme in (select theme_number
+                            from apex_application_themes
+                           where application_id = :app_id
+                             and is_current     = 'Yes')
+          loop
+              apex_util.set_current_theme_style (
+                  p_theme_number   => l_theme.theme_number,
+                  p_theme_style_id => :P10010_DESKTOP_THEME_STYLE_ID
+                  );
+          end loop;
+      end if;
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Application Appearance Settings Saved.
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Save End User Style Preference =============
+  id: 1527253937719012963
+  identification: 
+    name: Save End User Style Preference
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          l_enabled boolean := case when :P10010_END_USER_STYLE = 'Yes' then true else false end;
+      begin
+          for l_theme in ( select theme_number
+                             from apex_applications
+                            where application_id  = :APP_ID )
+          loop
+              if l_enabled then
+                  apex_theme.enable_user_style (
+                      p_application_id => :APP_ID,
+                      p_theme_number   => l_theme.theme_number );
+              else
+                  apex_theme.disable_user_style (
+                      p_application_id => :APP_ID,
+                      p_theme_number   => l_theme.theme_number );
+                  apex_theme.clear_all_users_style(:APP_ID);
+              end if;
+          end loop;
+      end;
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Application Appearance Settings Saved.
+
+  error: 
+    display-location: Inline in Notification
+
+branches: 
+- # ====== Branch: Branch to Admin Page ========================
+  id: 1527251302482012960
+  identification: 
+    name: Branch to Admin Page
+
+  execution: 
+    sequence: 10
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:10000:&APP_SESSION.::&DEBUG.:RP::&success_msg=#SUCCESS_MSG#'
+      page: 10000 # Administration
+      clear-cache: RP
+

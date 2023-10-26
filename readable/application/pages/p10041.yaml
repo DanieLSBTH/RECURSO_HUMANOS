@@ -1,0 +1,158 @@
+---
+# ====== Page: Help ==========================================
+id: 10041
+identification: 
+  name: Help
+  alias: HELP
+  title: Ayuda
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  chained: false
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: false
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+configuration: 
+  build-option: 'Feature: About Page' # 1527238438286012948
+
+regions: 
+- # ====== Region: Search Dialog ===============================
+  id: 1527384799731013498
+  identification: 
+    title: Search Dialog
+    type: Static Content
+
+  source: 
+    html-code: |
+      <!DOCTYPE html>
+      <html lang="es">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Página de Ayuda</title>
+          <style>
+              body {
+                  font-family: Arial, sans-serif;
+                  background-color: #f0f0f0;
+                  text-align: center;
+              }
+              .container {
+                  background-color: #fff;
+                  max-width: 600px;
+                  margin: 0 auto;
+                  padding: 20px;
+                  border-radius: 10px;
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+              }
+              h1 {
+                  color: #333;
+              }
+              p {
+                  color: #555;
+              }
+          </style>
+      </head>
+      <body>
+          <div class="container">
+              <h1>Bienvenido a nuestra página de ayuda</h1>
+              <p>¡Estamos aquí para ayudarte!</p>
+              <p>Si deseas descargar el manual de usuario, haz clic en el siguiente enlace:</p>
+              <a href="https://drive.google.com/file/d/1kWA8UvSGefK-VU41IoMHMfBph1YiBgcj/view?usp=sharing" target="_blank">Descargar el archivo</a>
+          </div>
+      </body>
+      </html>
+      
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 1525782928185012753
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P10041_PAGE_ID ===========================
+  id: 1527385117157013499
+  identification: 
+    name: P10041_PAGE_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Search Dialog # 1527384799731013498
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+

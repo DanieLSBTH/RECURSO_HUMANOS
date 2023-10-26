@@ -1,0 +1,523 @@
+---
+# ====== Page: Login Page ====================================
+id: 9999
+identification: 
+  name: Login Page
+  alias: LOGIN
+  title: RECUROS HUMANOS - Log In
+
+appearance: 
+  page-mode: Normal
+  page-template: Login # 1525757699114012741
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: First item on page
+  warn-on-unsaved-changes: false
+
+css: 
+  inline: |
+    span.t-Login-logo { 
+    background-image: url(#APP_FILES#6846568.png);
+    background-size: cover;
+    width: 200px;
+    height :200px;
+    }
+    
+    .t-PageBody--login {
+    background-image:url(#APP_FILES#e126d318274739fbb93081612b4edbc3.jpg);
+    background-repeat: no-repeat;
+    background-size : cover;
+    background-position: center;
+    }
+
+security: 
+  authentication: Page Is Public
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-meta-tags: false
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: RECUROS HUMANOS =============================
+  id: 1527240836781012951
+  identification: 
+    title: RECUROS HUMANOS
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login # 1527044333989012781
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P9999_STATUS =============================
+  id: 1526924769614263001
+  identification: 
+    name: P9999_STATUS
+    type: Select List
+
+  label: 
+    label: Tipo de rol
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+    allow-multi-selection: false
+
+  layout: 
+    sequence: 40
+    region: RECUROS HUMANOS # 1527240836781012951
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1527120254712012818
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: STATUS # 1527529790928042809
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9999_USERNAME ===========================
+  id: 1527241357994012951
+  identification: 
+    name: P9999_USERNAME
+    type: Text Field
+
+  label: 
+    label: USUARIO
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: RECUROS HUMANOS # 1527240836781012951
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden # 1527119921116012818
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-user
+    width: 40
+    value-placeholder: Username
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    custom-attributes: 
+    - autocomplete="username"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9999_PASSWORD ===========================
+  id: 1527241772620012952
+  identification: 
+    name: P9999_PASSWORD
+    type: Password
+
+  label: 
+    label: CONTRASEÑA
+    alignment: Left
+
+  settings: 
+    submit-when-enter-pressed: true
+
+  layout: 
+    sequence: 20
+    region: RECUROS HUMANOS # 1527240836781012951
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden # 1527119921116012818
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-key
+    width: 40
+    value-placeholder: Password
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    custom-attributes: 
+    - autocomplete="current-password"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9999_REMEMBER ===========================
+  id: 1527242118203012952
+  identification: 
+    name: P9999_REMEMBER
+    type: Checkbox
+
+  label: 
+    label: Recordar Usuario
+    alignment: Left
+
+  settings: 
+    use-defaults: true
+
+  layout: 
+    sequence: 30
+    region: RECUROS HUMANOS # 1527240836781012951
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden # 1527119921116012818
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: apex_authentication.persistent_cookies_enabled
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: LOGIN =======================================
+  id: 1527242588995012952
+  identification: 
+    button-name: LOGIN
+    label: Iniciar Sesión
+
+  layout: 
+    sequence: 40
+    region: RECUROS HUMANOS # 1527240836781012951
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1527122763424012819
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+processes: 
+- # ====== Process: Login ======================================
+  id: 1527242824045012953
+  identification: 
+    name: Login
+    type: Invoke API
+    execution-chain: None
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: APEX_AUTHENTICATION
+    procedure-or-function: LOGIN
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  parameters: 
+  - # ====== Parameter: p_username ===============================
+    id: 1527243383618012953
+    identification: 
+      name: p_username
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P9999_USERNAME
+
+    advanced: 
+      display-sequence: 1
+
+  - # ====== Parameter: p_password ===============================
+    id: 1527243860493012953
+    identification: 
+      name: p_password
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P9999_PASSWORD
+
+    advanced: 
+      display-sequence: 2
+
+  - # ====== Parameter: p_set_persistent_auth ====================
+    id: 1527244382875012954
+    identification: 
+      name: p_set_persistent_auth
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 3
+
+- # ====== Process: Set Username Cookie ========================
+  id: 1527244724998012954
+  identification: 
+    name: Set Username Cookie
+    type: Invoke API
+    execution-chain: None
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: APEX_AUTHENTICATION
+    procedure-or-function: SEND_LOGIN_USERNAME_COOKIE
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  parameters: 
+  - # ====== Parameter: p_username ===============================
+    id: 1527245212928012954
+    identification: 
+      name: p_username
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Expression
+      language: PL/SQL
+      pl/sql-expression: 'lower( :P9999_USERNAME )'
+
+    advanced: 
+      display-sequence: 1
+
+  - # ====== Parameter: p_consent ================================
+    id: 1527245795062012954
+    identification: 
+      name: p_consent
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: false
+
+    value: 
+      type: Item
+      item: P9999_REMEMBER
+
+    advanced: 
+      display-sequence: 2
+
+- # ====== Process: Get Username Cookie ========================
+  id: 1527246203214012955
+  identification: 
+    name: Get Username Cookie
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      :P9999_USERNAME := apex_authentication.get_login_username_cookie;
+      :P9999_REMEMBER := case when :P9999_USERNAME is not null then 'Y' end;
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Clear Page(s) Cache ========================
+  id: 1527246616818012955
+  identification: 
+    name: Clear Page(s) Cache
+    type: Clear Session State
+    execution-chain: None
+
+  settings: 
+    type: Clear all Items on the Current Page
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+

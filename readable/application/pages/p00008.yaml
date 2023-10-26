@@ -1,0 +1,478 @@
+---
+# ====== Page: ARCHIVOS COMPARTIDOS ==========================
+id: 8
+identification: 
+  name: ARCHIVOS COMPARTIDOS
+  alias: ARCHIVOS-COMPARTIDOS
+  title: ARCHIVOS COMPARTIDOS
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: ARCHIVOS COMPARTIDOS ========================
+  id: 1597227128405042640
+  identification: 
+    title: ARCHIVOS COMPARTIDOS
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: select "ID","NOMBRE_DE_ARCHIVO",sys.dbms_lob.getlength("ARCHIVO_CARGADO")"ARCHIVO_CARGADO","MIMETYPE","CARACTERES","ULTIMA_ACTUALIZACION","CATEGORIA"from "ARCHIVOS"
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1527049557849012783
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 50
+
+    appearance: 
+      template-type: Theme
+      template: Standard # 1527087778056012801
+      template-options: 
+      - '#DEFAULT#'
+      - t-Report--stretch
+      - t-Report--staticRowColors
+      - t-Report--rowHighlight
+      - t-Report--inline
+      - t-Report--hideNoPagination
+
+    pagination: 
+      type: Row Ranges X to Y (with next and previous links)
+      display-position: Bottom - Right
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 500
+
+    messages: 
+      when-no-data-found: no data found
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: ID ==========================================
+    id: 1597227474252042641
+    identification: 
+      column-name: ID
+      type: Link
+
+    heading: 
+      alignment: center
+
+    layout: 
+      sequence: 0
+      column-alignment: center
+
+    accessibility: 
+      value-identifies-row: false
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9:&APP_SESSION.::&DEBUG.:RP:P9_ID:\#ID#\'
+        page: 9 # CARGA DE ARCHIVOS
+        clear-cache: RP
+        values: 
+          p9_id: '#ID#'
+
+      link-text: <span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: NOMBRE_DE_ARCHIVO ===========================
+    id: 1597227862946042642
+    identification: 
+      column-name: NOMBRE_DE_ARCHIVO
+      type: Plain Text
+
+    heading: 
+      heading: Nombre De Archivo
+      alignment: start
+
+    layout: 
+      sequence: 2
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ARCHIVO_CARGADO =============================
+    id: 1597228222168042642
+    identification: 
+      column-name: ARCHIVO_CARGADO
+      type: Download BLOB
+
+    heading: 
+      heading: Archivo Cargado
+      alignment: start
+
+    layout: 
+      sequence: 3
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      content-disposition: Attachment
+
+    blob-attributes: 
+      table-owner: Parsing Schema
+      table-name: ARCHIVOS
+      blob-column: ARCHIVO_CARGADO
+      primary-key-column-1: ID
+      mime-type-column: MIMETYPE
+      filename-column: NOMBRE_DE_ARCHIVO
+      last-updated-column: ULTIMA_ACTUALIZACION
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+  - # ====== Column: MIMETYPE ====================================
+    id: 1597228689515042642
+    identification: 
+      column-name: MIMETYPE
+      type: Plain Text
+
+    heading: 
+      heading: Mimetype
+      alignment: start
+
+    layout: 
+      sequence: 4
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CARACTERES ==================================
+    id: 1597229051357042642
+    identification: 
+      column-name: CARACTERES
+      type: Plain Text
+
+    heading: 
+      heading: Caracteres
+      alignment: start
+
+    layout: 
+      sequence: 5
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ULTIMA_ACTUALIZACION ========================
+    id: 1597229460941042643
+    identification: 
+      column-name: ULTIMA_ACTUALIZACION
+      type: Plain Text
+
+    heading: 
+      heading: Ultima Actualizacion
+      alignment: start
+
+    layout: 
+      sequence: 6
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CATEGORIA ===================================
+    id: 1597229863510042643
+    identification: 
+      column-name: CATEGORIA
+      type: Plain Text
+
+    heading: 
+      heading: Categoria
+      alignment: start
+
+    layout: 
+      sequence: 7
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+- # ====== Region: Breadcrumb ==================================
+  id: 1597231967906042644
+  identification: 
+    title: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 1525746269398012735
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar # 1527061998986012789
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb # 1527124306252012820
+      template-options: 
+      - '#DEFAULT#'
+
+buttons: 
+- # ====== Button: CREATE ======================================
+  id: 1597230389974042643
+  identification: 
+    button-name: CREATE
+    label: NUEVO
+
+  layout: 
+    sequence: 10
+    region: ARCHIVOS COMPARTIDOS # 1597227128405042640
+    position: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1527122763424012819
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:9:&APP_SESSION.::&DEBUG.:9::'
+      page: 9 # CARGA DE ARCHIVOS
+      clear-cache: 9
+
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: Edit Report - Dialog Closed =========
+  id: 1597230666386042644
+  identification: 
+    name: Edit Report - Dialog Closed
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    selection-type: Region
+    region: ARCHIVOS COMPARTIDOS # 1597227128405042640
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 1597231115811042644
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: ARCHIVOS COMPARTIDOS # 1597227128405042640
+
+    execution: 
+      sequence: 10
+      event: Edit Report - Dialog Closed # 1597230666386042644
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+

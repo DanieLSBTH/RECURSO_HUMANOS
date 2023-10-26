@@ -1,0 +1,184 @@
+---
+# ====== Page: About =========================================
+id: 10040
+identification: 
+  name: About
+  alias: ABOUT
+  title: Acerca de la pagina
+  page-group: Administration # 1527240249280012950
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: First item on page
+  warn-on-unsaved-changes: false
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+help: 
+  help-text: All application help text can be accessed from this page. The links in the "Documentation" region give a much more in-depth explanation of the application's features and functionality.
+
+configuration: 
+  build-option: 'Feature: About Page' # 1527238438286012948
+
+regions: 
+- # ====== Region: Acerca de la pagina =========================
+  id: 1527384033581013497
+  identification: 
+    title: Acerca de la pagina
+    type: Static Content
+
+  source: 
+    html-code: |
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <title>Acerca de Recursos Humanos</title>
+          <style>
+              body {
+                  font-family: Arial, sans-serif;
+                  background-color: #f0f0f0;
+                  margin: 0;
+                  padding: 0;
+              }
+              h1 {
+                  background-color: #3498db;
+                  color: #fff;
+                  text-align: center;
+                  padding: 20px 0;
+              }
+              p, ul {
+                  margin: 20px;
+              }
+              strong {
+                  color: #3498db;
+              }
+              ul {
+                  list-style-type: square;
+              }
+              a {
+                  color: #3498db;
+                  text-decoration: none;
+              }
+          </style>
+      </head>
+      <body>
+          <h1>Acerca de Recursos Humanos</h1>
+      
+          <section>
+              <h2>Introducción</h2>
+              <p>Bienvenidos a nuestra página, tu fuente confiable de recursos humanos en línea. En [Nombre de la Página Web], estamos comprometidos con [tu misión y valores]. Nuestra misión es [descripción de la misión].</p>
+          </section>
+      
+          <section>
+              <h2>Nuestra Misión</h2>
+              <p>En Recursos Humanos, nuestra misión es guardar y respaldar tu información. Estamos dedicados a proporcionar información, asesoramiento y herramientas para optimizar la gestión de recursos humanos.</p>
+          </section>
+      
+          <section>
+              <h2>Nuestro Equipo</h2>
+              <p>Nuestro equipo de expertos en recursos humanos está aquí para brindarte la información más actualizada y valiosa. Nuestros escritores, editores y colaboradores tienen una amplia experiencia en el campo de los recursos humanos y están comprometidos con ayudarte a tener éxito en la gestión de tu equipo.</p>
+          </section>
+      
+          <section>
+              <h2>¿Por Qué Elegirnos?</h2>
+              <ul>
+                  <li>--------------------.</li>
+                  <li>--------------------.</li>
+                  <li>--------------------.</li>
+              </ul>
+          </section>
+      
+          <section>
+              <h2>Contacto</h2>
+              <p>Si tienes alguna pregunta, comentario o sugerencia, no dudes en ponerte en contacto con nosotros en <a href="mailto:correo@tudireccion.com">admi@gmail.com</a>.</p>
+          </section>
+      
+          <section>
+              <h2>Política de Privacidad</h2>
+              <p>En Recursos Humanos, nos tomamos la privacidad en serio. Puedes leer nuestra política de privacidad <a href="enlace-a-politica-de-privacidad.html">aquí</a> para obtener más información sobre cómo manejamos tus datos.</p>
+          </section>
+      
+          <section>
+              <h2>Términos de Uso</h2>
+              <p>Asegúrate de leer y aceptar nuestros <a href="enlace-a-terminos-de-uso.html">Términos de Uso</a>.</p>
+          </section>
+      
+          <section>
+              <h2>Redes Sociales</h2>
+              <p>Conéctate con nosotros en nuestras redes sociales para mantenerte al tanto de las últimas actualizaciones, consejos y recursos relacionados con recursos humanos.</p>
+              <ul>
+                  <li><a href="enlace-a-red-social-1">Facebook</a></li>
+                  <li><a href="enlace-a-red-social-2">Twitter</a></li>
+                  <li><a href="enlace-a-red-social-3">LinkedIn</a></li>
+              </ul>
+          </section>
+      
+          <section>
+              <h2>Agradecimiento</h2>
+              <p>Agradecemos tu visita. Estamos aquí para apoyarte en tus necesidades de recursos humanos y esperamos que encuentres nuestra página informativa y útil en tu camino hacia el éxito.</p>
+          </section>
+      </body>
+      </html>
+      
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Content Block # 1527011695813012767
+    template-options: 
+    - '#DEFAULT#'
+    - t-ContentBlock--padded
+    - t-ContentBlock--h1
+    - t-ContentBlock--lightBG
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+

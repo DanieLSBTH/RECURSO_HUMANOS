@@ -1,0 +1,147 @@
+---
+- # ====== Breadcrumb: Breadcrumb ==============================
+  id: 1525746269398012735
+  identification: 
+    name: Breadcrumb
+
+  entries: 
+  - # ====== Entry: Home =========================================
+    id: 1525746449421012736
+    identification: 
+      name: Home
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # Home
+
+  - # ====== Entry: Administration ===============================
+    id: 1527389962858013502
+    identification: 
+      name: Administration
+      page-number: 10000
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10000:&APP_SESSION.::&DEBUG.:::'
+        page: 10000 # Administration
+
+  - # ====== Entry: DEPARTAMENTOS ================================
+    id: 1558953589085567835
+    identification: 
+      name: DEPARTAMENTOS
+      page-number: 2
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
+        page: 2 # DEPARTAMENTOS
+
+  - # ====== Entry: PUESTOS ======================================
+    id: 1558996601035574389
+    identification: 
+      name: PUESTOS
+      page-number: 4
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:4:&APP_SESSION.::&DEBUG.:::'
+        page: 4 # PUESTOS
+
+  - # ====== Entry: PERSONAL ACTIVO ==============================
+    id: 1594663883131257590
+    identification: 
+      name: PERSONAL ACTIVO
+      page-number: 6
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:6:&APP_SESSION.::&DEBUG.:::'
+        page: 6 # PERSONAL ACTIVO
+
+  - # ====== Entry: ARCHIVOS COMPARTIDOS =========================
+    id: 1597231894214042644
+    identification: 
+      name: ARCHIVOS COMPARTIDOS
+      page-number: 8
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:8:&APP_SESSION.::&DEBUG.:::'
+        page: 8 # ARCHIVOS COMPARTIDOS
+
+  - # ====== Entry: ARCHIVOS CONTABILIDAD ========================
+    id: 1603157704008077357
+    identification: 
+      name: ARCHIVOS CONTABILIDAD
+      page-number: 11
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:11:&APP_SESSION.::&DEBUG.:::'
+        page: 11 # ARCHIVOS CONTABILIDAD
+
+  - # ====== Entry: USUARIOS =====================================
+    id: 1605372680598333883
+    identification: 
+      name: USUARIOS
+      page-number: 13
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:13:&APP_SESSION.::&DEBUG.:::'
+        page: 13 # USUARIOS
+
+  - # ====== Entry: REPORTE ACTIVO DE ENTRADAS ===================
+    id: 2899389707463502490
+    identification: 
+      name: REPORTE ACTIVO DE ENTRADAS
+      page-number: 10
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10:&APP_SESSION.::&DEBUG.:::'
+        page: 10 # REPORTE ACTIVO DE ENTRADAS
+
+  - # ====== Entry: EDICION DE ENTRADA EMPLEADOS =================
+    id: 2916386718268330636
+    identification: 
+      name: EDICION DE ENTRADA EMPLEADOS
+      page-number: 16
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:16:&APP_SESSION.::&DEBUG.:::'
+        page: 16 # EDICION DE ENTRADA EMPLEADOS
+
